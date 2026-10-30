@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proposal for Matt Hawksley — Philip Oladele</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --border: #262626;
+      --text: #f5f5f5;
+      --muted: #a3a3a3;
+      --accent: #e8e8e8;
+      --green: #22c55e;
+      --amber: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 96px;
+    }
+    header {
+      margin-bottom: 64px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .lede {
+      font-size: 1.125rem;
+      color: var(--muted);
+      max-width: 540px;
+    }
+    section {
+      margin-bottom: 56px;
+    }
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 28px 0 12px;
+      color: var(--accent);
+    }
+    p {
+      margin-bottom: 16px;
+      color: var(--muted);
+    }
+    p strong { color: var(--text); font-weight: 500; }
+    ul {
+      list-style: none;
+      margin: 16px 0 24px;
+    }
+    li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 10px;
+      color: var(--muted);
+    }
+    li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin: 24px 0;
+    }
+    .card h3 { margin-top: 0; }
+    .phase-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-bottom: 12px;
+    }
+    .phase-1 { background: rgba(34, 197, 94, 0.12); color: var(--green); }
+    .phase-2 { background: rgba(245, 158, 11, 0.12); color: var(--amber); }
+    .sequence {
+      counter-reset: step;
+    }
+    .sequence li {
+      counter-increment: step;
+      padding-left: 36px;
+      margin-bottom: 18px;
+    }
+    .sequence li::before {
+      content: counter(step);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--border);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 2px;
+    }
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 48px 0;
+    }
+    .quote {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      line-height: 1.4;
+      color: var(--text);
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 32px 0;
+    }
+    .footer {
+      margin-top: 64px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .footer a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+    }
+    .footer a:hover { border-color: var(--text); }
+    .cta {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 14px 28px;
+      background: var(--text);
+      color: var(--bg);
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .cta:hover { opacity: 0.9; }
+    @media (max-width: 600px) {
+      .wrap { padding: 32px 20px 64px; }
+      h1 { font-size: 1.85rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="eyebrow">Proposal · October 2026</div>
+      <h1>A specific plan for Freshly Brewed Coaching and the Reinvention launch</h1>
+      <p class="lede">Not a template. Built from what you already have, what has and has not worked, and the gap between knowing the tactics and running them consistently.</p>
+    </header>
+
+    <section>
+      <h2>What I heard</h2>
+      <p>You are running two jobs at once: a renewed push for <strong>Freshly Brewed Coaching</strong> (the business fable already in market, aimed at 18–35 year-olds starting out, changing careers, or landing in a new country or business) and the build-up to <strong>Reinvention: Thinking Beyond the Ladder</strong> (launch expected end of year or early next).</p>
+      <p>The commercial model is clear: the book and author brand sit in front; workshops, speaking and consulting are the real outcome. You sell the workshop; the book rides along.</p>
+      <p>LinkedIn is the only live channel. The Reinvention Report sits at roughly 840–850 subscribers. YouTube under Leadogo is unused. Instagram and Facebook are quiet. You have unreleased video and three or four recent podcast appearances that can become clips. Email campaigns and Facebook ads have been tried without consistency. Amazon reviews are still in the single digits. There is a 99-cent companion ebook.</p>
+      <p>Success is measured in book sales plus the number of discovery calls and enquiries for speaking, workshops and training that follow.</p>
+    </section>
+
+    <div class="quote">
+      “If you did have that and say, here’s what I do and this is what it is, I’d probably be saying this guy’s just gonna put a cookie cutter solution into a place.”
+    </div>
+
+    <section>
+      <h2>Why this is not a cookie-cutter plan</h2>
+      <p>You already know the tools. Naming Facebook ads or a content calendar would not move the needle. The real constraint is consistent execution against a clear sequence that matches how your buyers actually move: from LinkedIn post or newsletter → book or waitlist → discovery call → workshop or speaking.</p>
+      <p>What I have seen work for authors in a similar position (experienced operators with an existing book and a second title coming):</p>
+      <ul>
+        <li>Treating the existing book as the primary lead magnet while the new book is still unfinished, rather than waiting for the perfect launch moment.</li>
+        <li>Turning existing podcast audio and unreleased video into short, specific clips that speak to one pain point at a time (career pivot, new country, first leadership role) instead of generic “inspiration.”</li>
+        <li>Using the newsletter as the relationship layer and LinkedIn as the discovery layer — not the other way around.</li>
+        <li>Making the workshop the explicit next step on every book page and in every email, so the book does commercial work instead of sitting as a static product.</li>
+      </ul>
+      <p>What has not worked (and why it usually fails for operators who already understand marketing):</p>
+      <ul>
+        <li>Sporadic email blasts or ad spends without a fixed weekly cadence. The system collapses the moment life intervenes (as it did with your wife’s surgery).</li>
+        <li>Spreading effort across Instagram, Facebook and YouTube before LinkedIn and the newsletter are fully leveraged. Attention is finite; dilution is expensive.</li>
+        <li>Launching a second book without first converting the existing list and podcast appearances into measurable discovery calls. The second launch then starts from the same low baseline.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Two phases, side by side</h2>
+      <p>You said you would build up rather than spend the lot at once. The sequence below is designed so Phase 1 can stand alone and still produce results before the Reinvention launch, while Phase 2 expands the same system around the new book.</p>
+
+      <div class="card">
+        <span class="phase-label phase-1">Phase 1 · Pre-launch foundation</span>
+        <h3>Make Freshly Brewed and the current assets do commercial work</h3>
+        <p>Goal: consistent weekly output on LinkedIn + newsletter, extract value from existing podcasts and video, raise review count, and turn the book into a reliable source of discovery calls for workshops and speaking.</p>
+        
+        <h3>Specific sequence</h3>
+        <ol class="sequence">
+          <li>
+            <strong>Audit and extract.</strong> Pull the 3–4 recent podcast appearances and any unreleased video. Identify the 8–12 strongest 30–60 second moments that map to the exact audience (first leadership role, career change, new country, solopreneur stuck). These become the clip library.
+          </li>
+          <li>
+            <strong>LinkedIn operating rhythm.</strong> Three posts per week maximum, each tied to one concrete idea from the book or a real coaching story. One post each week ends with a clear invitation to the book or to a discovery call. No daily posting for the sake of volume.
+          </li>
+          <li>
+            <strong>Newsletter as relationship engine.</strong> Keep the Wednesday cadence. Every issue includes one short practical tool from the Diagnose–Prescribe–Thrive framework and one soft CTA to the book or a workshop enquiry. Aim to grow the 840–850 list by treating every LinkedIn post as a list-building opportunity.
+          </li>
+          <li>
+            <strong>Review acceleration.</strong> Simple, non-spammy sequence to existing readers and podcast listeners asking for honest Amazon reviews. Target moving from 5–6 to 20+ before the new book launches. Reviews are social proof for both titles.
+          </li>
+          <li>
+            <strong>Book page and waitlist alignment.</strong> Ensure the Freshly Brewed page and the new Reinvention waitlist both make the next step (workshop / speaking enquiry) obvious. The book is the front door; the workshop is the room they are invited into.
+          </li>
+        </ol>
+        <p><strong>Why this order:</strong> You already have the content assets and the audience attention on LinkedIn. The bottleneck is conversion of that attention into consistent book sales and discovery calls. Fixing the extraction and the weekly rhythm first produces results without requiring new paid channels or a second book.</p>
+      </div>
+
+      <div class="card">
+        <span class="phase-label phase-2">Phase 2 · Reinvention launch system</span>
+        <h3>Scale the same system around the new book</h3>
+        <p>Goal: launch Reinvention: Thinking Beyond the Ladder with a working engine already in place, so the launch is an amplification rather than a cold start.</p>
+        
+        <h3>Specific sequence</h3>
+        <ol class="sequence">
+          <li>
+            <strong>Waitlist conversion path.</strong> Build a short, high-trust sequence for the Reinvention waitlist that uses the same Diagnose–Prescribe–Thrive language and points both to the new book and to a launch workshop or speaking opportunity.
+          </li>
+          <li>
+            <strong>Content bridge.</strong> Use Phase 1 clips and LinkedIn posts to warm the audience for the new title. The message is continuity, not a hard pivot: the same operator who wrote Freshly Brewed is now going deeper on reinvention.
+          </li>
+          <li>
+            <strong>Launch week concentration.</strong> Coordinated LinkedIn + newsletter + email sequence in the 10 days around publication. One clear primary CTA (buy the book + join the launch workshop or book a discovery call). Secondary channels (YouTube clips, short-form from existing video) only if the LinkedIn + newsletter engine is already producing.
+          </li>
+          <li>
+            <strong>Paid amplification only after organic proof.</strong> Small, tightly targeted Facebook or LinkedIn spend only once organic posts and the newsletter are converting at a measurable rate. No broad awareness campaigns until the conversion path is proven.
+          </li>
+          <li>
+            <strong>Post-launch cadence.</strong> Return to the Phase 1 weekly rhythm, now with two books in the system. The second book becomes the new primary lead magnet while Freshly Brewed continues to serve the original audience.
+          </li>
+        </ol>
+        <p><strong>Why this order:</strong> Launching a second book without first proving the conversion system on the first book is the most common expensive mistake I see. Phase 2 only expands what Phase 1 has already made reliable.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>What success looks like at review</h2>
+      <ul>
+        <li>Steady weekly LinkedIn and newsletter output that does not collapse when life intervenes.</li>
+        <li>Clear lift in Amazon reviews and measurable book sales attributable to the system.</li>
+        <li>Trackable discovery calls and workshop/speaking enquiries that can be tied back to specific posts, emails or clips.</li>
+        <li>A documented operating rhythm you can hand to someone else or run yourself without reinventing it every month.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>How we work</h2>
+      <p>I treat this as a partnership, not a deliverables dump. You already know the landscape. My job is to install the sequence, keep the cadence honest, extract the assets you already have, and make sure every piece of content points at the commercial outcome you care about.</p>
+      <p>Communication can be email or WhatsApp — whichever keeps the loop tight. I will send the first draft of any public post or email sequence for your approval before it goes out.</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <h2>Next step</h2>
+      <p>If the two-phase structure and the reasoning match what you were looking for, we can start with Phase 1 on a fixed monthly engagement and expand into Phase 2 when the Reinvention timeline is locked.</p>
+      <p>I can also send a short LinkedIn post draft that captures the exact insight you gave me — the gap between knowing the tactics and actually running them consistently. It is useful content for other operators in the same position, and a quiet way to surface more conversations like this one.</p>
+      <a href="mailto:philip.oladele@philipoladele.com" class="cta">Reply by email or WhatsApp</a>
+    </section>
+
+    <div class="footer">
+      <p>Philip Oladele<br />
+      Digital Growth Strategist · Author & Book Marketing<br />
+      <a href="https://philipoladele.com">philipoladele.com</a> · <a href="mailto:philip.oladele@philipoladele.com">philip.oladele@philipoladele.com</a></p>
+    </div>
+  </div>
+</body>
+</html>
